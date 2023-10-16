@@ -8,9 +8,9 @@ public class YandexTest extends TestBase{
     @Test
     public void firstTest() {
         app.navigator().openHomePage();
-        //app.login().goToAuthPage();
-        //app.login().typeUsername();
-        //app.login().typePassword();
+        app.login().goToAuthPage();
+        app.login().typeUsername();
+        app.login().typePassword();
         app.navigator().goToYandexIdPage();
         app.page().switchToNewTabAndCloseOldTab();
         app.navigator().goToYandexDiscPage();
@@ -25,9 +25,9 @@ public class YandexTest extends TestBase{
     @Test
     public void secondTest() {
         app.navigator().openHomePage();
-        //app.login().goToAuthPage();
-        //app.login().typeUsername();
-        //app.login().typePassword();
+        app.login().goToAuthPage();
+        app.login().typeUsername();
+        app.login().typePassword();
         app.navigator().goToYandexIdPage();
         app.page().switchToNewTabAndCloseOldTab();
         app.navigator().goToYandexDiscPage();
@@ -36,7 +36,18 @@ public class YandexTest extends TestBase{
         app.upload().openUploadFile();
         app.page().switchToNewTab();
         app.upload().testUploadAssert();
-        app.page().switchToNewTabAndCloseOldTab();
+        app.page().switchToPreviousTab();
+
+
+        //app.page().closeNewTabAndSwitchToOldTab();/todo
+        //app.page().switchToOldTabAndCloseCurrent();
+
+        app.navigator().clickCloseHeaderButton();
+        //app.page().switchToPreviousTabAndClosePrevious();
+
+
+
         app.login().logout();
+
     }
 }

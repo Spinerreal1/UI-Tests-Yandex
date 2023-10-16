@@ -15,7 +15,7 @@ public class NavigationHelper extends HelperBase{
     private final By _dropDownMenuYandexId = By.xpath("//*[@class='UserID-Account']");
     private final By  iframeLocator = By.xpath("//iframe[contains(@class, 'UserWidget-Iframe')]");
     private final By _yandexDiscLink = By.xpath("//*[@class='MenuItem-Content']//*[text()='Диск']");
-
+    private final By _closeHeaderButton = By.xpath("//*[@aria-label='Отменить выделение']");
 
 
 
@@ -29,6 +29,9 @@ public class NavigationHelper extends HelperBase{
     }
     public void clickDisc(){
         clickInsideIFrame(iframeLocator, _yandexDiscLink);
+    }
+    public void clickCloseHeaderButton(){
+        driver.findElement(_closeHeaderButton).click();
     }
 
 

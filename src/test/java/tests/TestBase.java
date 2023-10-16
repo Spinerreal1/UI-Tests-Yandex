@@ -15,12 +15,7 @@ public class TestBase {
     }
 
     @AfterEach
-    public void tearDown() throws IOException {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void tearDown() {
         app.takeScreenshot();
         app.stop();
     }

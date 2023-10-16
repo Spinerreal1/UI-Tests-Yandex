@@ -7,38 +7,48 @@ import org.openqa.selenium.WebElement;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Duration;
-import java.util.List;
 
 public class UploadHelper extends HelperBase {
     public UploadHelper(WebDriver driver) {
         super(driver);
     }
-    private String filePathTxt = "C:\\drivers\\testuploadfile.txt";
+    //private String fileTxt = "src/main/resources/file.txt";
+    private String fileTxt = System.getProperty("user.dir") + "/src/main/resources/file.txt";
+    //Path filePath = Paths.get(fileTxt);
     private final By _uploadButton = By.xpath("//*[@class='upload-button__attach']");
     private final By _submitUpload = By.xpath("//*[contains(@class, 'button_submit')]");
-    private final By _filePosition = By.xpath("//*[contains(@class, 'listing_completed')]//*[@aria-label='testuploadfile.txt']");
+    private final By _filePosition = By.xpath("//*[contains(@class, 'listing_completed')]//*[@aria-label='file.txt']");
     private final By _uploadStatus = By.xpath("//*[@class='uploader-progress__progress-primary'][text()='Все файлы загружены']");
-    private final By _textWeb = By.xpath("//*[contains(@class, 'page_with_table_layout_fixed')]//p[@class='mg1']");
+    private final By _textWeb = By.xpath("//*[@class='__page-1']");
 
     public void uploadFile(){
          WebElement upload = driver.findElement(_uploadButton);
-         upload.sendKeys(filePathTxt);
-         driver.findElement(_submitUpload).click();
+         upload.sendKeys(fileTxt);
+         //driver.findElement(_submitUpload).click();
     }
     public void openUploadFile(){
         waitForElementVisible(_uploadStatus);
         doubleClickElement(driver, _filePosition);
     }
 
-    String filePath = "C:\\drivers\\testuploadfile.txt";
     public void testUploadAssert() {
         try {
-            String fileContent = FileUtils.readFileToString(new File(filePath), "UTF-8");
+            // Считываем содержимое файла
+            //String filePath = System.getProperty("user.dir") + "/src/main/resources/file.txt";
+            String fileContent = FileUtils.readFileToString(new File(fileTxt), "UTF-8");
+
+            // Получаем текст с веб-страницы
             String webContent = driver.findElement(_textWeb).getText();
 
+            fileContent = fileContent.replace("\n", "").replace("\r", "");
+            webContent = webContent.replace("\n", "").replace("\r", "");
+
+            System.out.println("Содержимое файла: " + fileContent);
+            System.out.println("Содержимое веб-страницы: " + webContent);
+
+            // Сравниваем содержимое файла и веб-страницы
             if (fileContent.equals(webContent)) {
                 System.out.println("Содержимое файла совпадает с содержимым веб-страницы.");
             } else {

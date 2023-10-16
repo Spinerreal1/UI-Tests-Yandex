@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     WebDriver driver;
-    String chromeDirPath = "C:\\Users\\User\\AppData\\Local\\Google\\Chrome\\User Data";
 
     private LoginHelper loginHelper;
     private NavigationHelper navigationHelper;
@@ -24,12 +23,9 @@ public class ApplicationManager {
     private UploadHelper uploadHelper;
 
     public void init() {
-        System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         //options.addArguments("--headless");
-        //options.addArguments("--start-maximized", "--incognito");
-        options.addArguments("--start-maximized", "--user-data-dir=" + chromeDirPath);
-
+        options.addArguments("--start-maximized", "--incognito");
 
         driver = new ChromeDriver(options);
 
@@ -39,7 +35,7 @@ public class ApplicationManager {
         createHelper = new CreateHelper(driver);
         uploadHelper = new UploadHelper(driver);
         pageHelper = new PageHelper(driver);
-        navigationHelper.baseUrl = "https://disk.yandex.ru/client/recent?source=main-loginmenu";
+        navigationHelper.baseUrl = "https://yandex.ru/";
     }
 
 
