@@ -30,7 +30,6 @@ public class HelperBase {
         click(locator);
         if (text != null) {
             String existingText = driver.findElement(locator).getAttribute("value");
-
             if (!text.equals(existingText)) {
                 driver.findElement(locator).clear();
                 driver.findElement(locator).sendKeys(text);
@@ -67,7 +66,6 @@ public class HelperBase {
             return false;
         }
     }
-
     protected void clickInsideIFrame(By iframeLocator, By elementLocator) {
         WebElement iframe = driver.findElement(iframeLocator);
         driver.switchTo().frame(iframe);

@@ -34,7 +34,6 @@ public class NavigationHelper extends HelperBase{
         driver.findElement(_closeHeaderButton).click();
     }
 
-
     public void openHomePage() {
         driver.get(baseUrl);
     }

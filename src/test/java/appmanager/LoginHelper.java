@@ -15,10 +15,8 @@ public class LoginHelper extends HelperBase{
     private final By _usernameField = By.xpath("//input[@name='login']");
     private final By _passwordField = By.xpath("//*[@name='passwd']");
     private final By _submitButton = By.xpath("//button[@type='submit']");
-
     private final By _loginButton = By.xpath("//*[contains(@class, 'login')][2]");
     private final By _yandexIdSelectButton = By.xpath("//*[contains(@class, 'base-login')][text()='Войти через Яндекс ID']");
-
     private final By _openDropDownMenu = By.xpath("//*[@aria-label='Аккаунт']");
     private final By _exitButton = By.xpath("//*[@aria-label='Выйти из аккаунта']");
 
@@ -27,23 +25,21 @@ public class LoginHelper extends HelperBase{
 
     public void fillUsername(UsernameData accountData)
     {
-        //waitForElement(_usernameField);
         type(_usernameField, accountData.getUsername());
     }
     public void fillPassword(PasswordData passwordData){
-        //waitForElement(_passwordField);
         type(_passwordField, passwordData.getPassword());
     }
 
     public void typeUsername()
     {
-        fillUsername(new UsernameData("TestAuth00"));
+        fillUsername(new UsernameData("TestAuth00"));   //TestAuth00
         driver.findElement(_submitButton).click();
     }
 
     public void typePassword()
     {
-        fillPassword(new PasswordData("kj2h6tluh092"));
+        fillPassword(new PasswordData("kj2h6tluh092"));   //kj2h6tluh092
         driver.findElement(_submitButton).click();
     }
 
@@ -52,6 +48,7 @@ public class LoginHelper extends HelperBase{
         driver.findElement(_yandexIdSelectButton).click();
     }
     public void logout(){
+        waitForElementClickable(_openDropDownMenu);
         driver.findElement(_openDropDownMenu).click();
         driver.findElement(_exitButton).click();
     }

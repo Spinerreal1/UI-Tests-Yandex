@@ -5,6 +5,27 @@ import org.junit.jupiter.api.Test;
 
 public class YandexTest extends TestBase{
 
+
+/*  Предусловие:
+            ● Открыть браузер
+    Шаги:
+            ● Открыть страницу http://yandex.ru
+            ● Авторизоваться
+            ● Открыть Яндекс.Диск
+            ● Создать новую папку и назвать её
+            ● Открыть папку
+            ● Создать новый файл и назвать его
+            ● Закрыть открывшийся новый файл
+            ● Проверить наличие нового файла и его название
+    Ожидаемый результат:
+            ● Файл создан
+            ● Название соответствует введенному при создании
+    Постусловие:
+            ● Разлогиниться
+            ● Закрыть браузер*/
+
+
+
     @Test
     public void firstTest() {
         app.navigator().openHomePage();
@@ -22,6 +43,27 @@ public class YandexTest extends TestBase{
         Assertions.assertTrue(app.create().isNameWordFilePresent());
         app.login().logout();
     }
+
+
+
+/*  Предусловие:
+            ● Открыть браузер
+    Шаги:
+            ● Открыть страницу http://yandex.ru
+            ● Авторизоваться
+            ● Открыть Яндекс.Диск
+            ● Создать новую папку и назвать её
+            ● Открыть папку
+            ● Загрузить файл расширения .txt с текстом
+            ● Открыть файл
+            ● Проверить текст в файле
+    Ожидаемый результат:
+            ● Текст соответствует ожиданиям
+    Постусловие:
+            ● Разлогиниться
+            ● Закрыть браузер*/
+
+
     @Test
     public void secondTest() {
         app.navigator().openHomePage();
@@ -37,17 +79,8 @@ public class YandexTest extends TestBase{
         app.page().switchToNewTab();
         app.upload().testUploadAssert();
         app.page().switchToPreviousTab();
-
-
-        //app.page().closeNewTabAndSwitchToOldTab();/todo
-        //app.page().switchToOldTabAndCloseCurrent();
-
+        app.page().closeNewTabAndSwitchToOldTab();
         app.navigator().clickCloseHeaderButton();
-        //app.page().switchToPreviousTabAndClosePrevious();
-
-
-
         app.login().logout();
-
     }
 }
