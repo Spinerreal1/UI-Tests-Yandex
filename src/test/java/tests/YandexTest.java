@@ -1,31 +1,20 @@
 package tests;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class YandexTest extends TestBase{
 
 
-/*  Предусловие:
-            ● Открыть браузер
-    Шаги:
-            ● Открыть страницу http://yandex.ru
-            ● Авторизоваться
-            ● Открыть Яндекс.Диск
-            ● Создать новую папку и назвать её
-            ● Открыть папку
-            ● Создать новый файл и назвать его
-            ● Закрыть открывшийся новый файл
-            ● Проверить наличие нового файла и его название
-    Ожидаемый результат:
-            ● Файл создан
-            ● Название соответствует введенному при создании
-    Постусловие:
-            ● Разлогиниться
-            ● Закрыть браузер*/
-
-
-
+    @Epic("Тест кейсы yandex")
+    @Feature("Тест-кейс 1")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Создание нового файла и проверка корректности названия")
     @Test
     public void firstTest() {
         app.navigator().openHomePage();
@@ -46,24 +35,12 @@ public class YandexTest extends TestBase{
 
 
 
-/*  Предусловие:
-            ● Открыть браузер
-    Шаги:
-            ● Открыть страницу http://yandex.ru
-            ● Авторизоваться
-            ● Открыть Яндекс.Диск
-            ● Создать новую папку и назвать её
-            ● Открыть папку
-            ● Загрузить файл расширения .txt с текстом
-            ● Открыть файл
-            ● Проверить текст в файле
-    Ожидаемый результат:
-            ● Текст соответствует ожиданиям
-    Постусловие:
-            ● Разлогиниться
-            ● Закрыть браузер*/
 
 
+    @Epic("Тест кейсы yandex")
+    @Feature("Тест-кейс 1")
+    @Severity(SeverityLevel.CRITICAL)
+    @DisplayName("Загрузка и сравнение информации из фала txt и на яндекс диске")
     @Test
     public void secondTest() {
         app.navigator().openHomePage();

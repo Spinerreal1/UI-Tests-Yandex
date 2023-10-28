@@ -1,5 +1,6 @@
 package appmanager;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,22 +19,24 @@ public class NavigationHelper extends HelperBase{
     private final By _closeHeaderButton = By.xpath("//*[@aria-label='Отменить выделение']");
 
 
-
+    @Step("Переходим в яндекс ID из яндекс Дзен")
     public void goToYandexIdPage(){
         driver.findElement(_dropDownMenuDzen).click();
         driver.findElement(_nameInfoProfile).click();
     }
-
+    @Step("Открываем дропдаун меню в Яндекс ИД")
     public void goToYandexDiscPage(){
         waitForElementVisible(_dropDownMenuYandexId).click();
     }
+    @Step("Нажимаем на иконку яндекс диск")
     public void clickDisc(){
         clickInsideIFrame(iframeLocator, _yandexDiscLink);
     }
+    @Step("Закрываем панель действий")
     public void clickCloseHeaderButton(){
         driver.findElement(_closeHeaderButton).click();
     }
-
+    @Step("Открываем главную страницу")
     public void openHomePage() {
         driver.get(baseUrl);
     }

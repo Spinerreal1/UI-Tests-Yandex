@@ -28,7 +28,6 @@ public class ApplicationManager {
         options.addArguments("--start-maximized", "--incognito");
 
         driver = new ChromeDriver(options);
-
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         navigationHelper = new NavigationHelper(driver);
         loginHelper = new LoginHelper(driver);

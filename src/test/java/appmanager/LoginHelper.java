@@ -27,26 +27,28 @@ public class LoginHelper extends HelperBase{
     {
         type(_usernameField, accountData.getUsername());
     }
+
     public void fillPassword(PasswordData passwordData){
         type(_passwordField, passwordData.getPassword());
     }
-
+    @Step("Заполнение поля 'e-mail'")
     public void typeUsername()
     {
-        fillUsername(new UsernameData("TestAuth00"));   //TestAuth00
+        fillUsername(new UsernameData("TestAuth00"));
         driver.findElement(_submitButton).click();
     }
-
+    @Step("Заполнение поля 'пароль'")
     public void typePassword()
     {
-        fillPassword(new PasswordData("kj2h6tluh092"));   //kj2h6tluh092
+        fillPassword(new PasswordData("kj2h6tluh092"));
         driver.findElement(_submitButton).click();
     }
-
+    @Step("Переход на страницу авторизации")
     public void goToAuthPage(){
         driver.findElement(_loginButton).click();
         driver.findElement(_yandexIdSelectButton).click();
     }
+    @Step("Выход из системы")
     public void logout(){
         waitForElementClickable(_openDropDownMenu);
         driver.findElement(_openDropDownMenu).click();

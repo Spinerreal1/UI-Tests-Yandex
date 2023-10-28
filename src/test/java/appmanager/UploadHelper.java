@@ -1,5 +1,6 @@
 package appmanager;
 
+import io.qameta.allure.Step;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -25,11 +26,12 @@ public class UploadHelper extends HelperBase {
     private final By _deleteButton = By.xpath("//button[@aria-label='Удалить']");
 
 
-
+    @Step("Удаление файла txt, если присутствует")
     protected void deleteTxtIfExist(){
         driver.findElement(_filePosition).click();
         driver.findElement(_deleteButton).click();
     }
+    @Step("загрузка файла txt")
     public void uploadFile(){
         if(isElementPresent(_filePosition)){
             deleteTxtIfExist();
@@ -42,11 +44,12 @@ public class UploadHelper extends HelperBase {
             driver.findElement(_submitUpload).click();
         }
     }
+    @Step("Открытие загруженного файла даблкликом")
     public void openUploadFile(){
         waitForElementVisible(_uploadStatus);
         doubleClickElement(driver, _filePosition);
     }
-
+    @Step("Проверка эквивалентности содержимого на странице и в файле")
     public void testUploadAssert() {
         try {
             String fileContent = FileUtils.readFileToString(new File(fileTxt), "UTF-8");

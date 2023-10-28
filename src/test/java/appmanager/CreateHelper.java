@@ -1,6 +1,7 @@
 package appmanager;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import randomgenerator.RandomGenerator;
@@ -26,7 +27,7 @@ public class CreateHelper extends HelperBase {
     public CreateHelper(WebDriver driver) {
         super(driver);
     }
-
+    @Step("Создание новой папки на яндекс диске")
     public void createNewFolder() {
         driver.findElement(_filesButton).click();
         driver.findElement(_createButton).click();
@@ -36,7 +37,7 @@ public class CreateHelper extends HelperBase {
         driver.findElement(_submitFolderCreation).click();
     }
 
-
+    @Step("Открытие папки двойным кликом")
     public void openFolderDoubleClick() {
         if (folderNameValue != null) {
             doubleClickElement(driver, _folderByName(folderNameValue));
@@ -44,7 +45,7 @@ public class CreateHelper extends HelperBase {
             throw new IllegalStateException("folderNameValue is null. Cannot open folder.");
         }
     }
-
+    @Step("Создание нового текстового документа")
     public void createNewTextDocument() {
         driver.findElement(_createButton).click();
         driver.findElement(_wordIcon).click();
@@ -52,6 +53,8 @@ public class CreateHelper extends HelperBase {
         typeWithHotKeys(_inputName, fileNameValue);
         driver.findElement(_saveModalButton).click();
     }
+
+    @Step("вывод информации в консоль")
     public boolean isNameWordFilePresent() {
         try {
             waitForElementVisible(_fileByName(fileNameValue));
